@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DropZone Results</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:20px;
+}
+
+.box{
+background:#222;
+padding:20px;
+border-radius:15px;
+}
+
+input,button{
+padding:10px;
+margin:8px;
+border-radius:8px;
+}
+
+button{
+background:red;
+color:white;
+border:0;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🔥 Match Result</h1>
+
+<div class="box">
+
+<input id="name" placeholder="Player Name">
+<br>
+
+<input id="kills" type="number" placeholder="Kills">
+<br>
+
+<input id="rate" type="number" placeholder="Per Kill Reward">
+<br>
+
+<button onclick="calculate()">Calculate Reward</button>
+
+<h2 id="result"></h2>
+
+</div>
+
+
+<script>
+
+function calculate(){
+
+let name=document.getElementById("name").value;
+let kills=document.getElementById("kills").value;
+let rate=document.getElementById("rate").value;
+
+let reward=kills*rate;
+
+document.getElementById("result").innerHTML =
+name+" gets ₹"+reward;
+
+}
+
+</script>
+
+</body>
+</html>
