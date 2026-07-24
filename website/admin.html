@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DropZone Admin</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial;
+padding:20px;
+}
+
+input,button{
+padding:10px;
+margin:5px;
+border-radius:8px;
+}
+
+button{
+background:red;
+color:white;
+border:0;
+}
+
+.box{
+background:#222;
+padding:20px;
+border-radius:10px;
+}
+
+.card{
+background:#333;
+padding:10px;
+margin-top:10px;
+border-radius:8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🔥 DropZone Admin</h1>
+
+<div class="box">
+
+<h3>Add Tournament</h3>
+
+<input id="game" placeholder="Game Name">
+<br>
+
+<input id="entry" type="number" placeholder="Entry Fee">
+<br>
+
+<input id="kill" type="number" placeholder="Per Kill Reward">
+<br>
+
+<button onclick="addTournament()">Add Tournament</button>
+
+<div id="list"></div>
+
+</div>
+
+
+<script>
+
+function addTournament(){
+
+let game=document.getElementById("game").value;
+let entry=document.getElementById("entry").value;
+let kill=document.getElementById("kill").value;
+
+let data=document.createElement("div");
+
+data.className="card";
+
+data.innerHTML =
+"Game: "+game+
+"<br>Entry Fee: ₹"+entry+
+"<br>Per Kill: ₹"+kill;
+
+document.getElementById("list").appendChild(data);
+
+}
+
+</script>
+
+</body>
+</html>
