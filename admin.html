@@ -12,16 +12,26 @@ text-align:center;
 padding:20px;
 }
 
-input,button{
-padding:12px;
-margin:8px;
-border-radius:8px;
+.box{
+background:#222;
+padding:20px;
+border-radius:15px;
+margin:15px;
 }
 
 button{
 background:red;
 color:white;
+padding:12px;
 border:0;
+border-radius:8px;
+}
+
+.player{
+background:#333;
+padding:10px;
+margin:10px;
+border-radius:8px;
 }
 </style>
 
@@ -31,57 +41,41 @@ border:0;
 
 <h1>🔥 DropZone Admin</h1>
 
-<input id="game" placeholder="Game Name">
-<br>
+<div class="box">
 
-<input id="entry" placeholder="Entry Fee">
-<br>
+<h2>Players List</h2>
 
-<input id="kill" placeholder="Per Kill Reward">
-<br>
+<div id="players"></div>
 
-<button onclick="saveTournament()">Save</button>
-
-<h3 id="msg"></h3>
-
-<div id="show"></div>
+</div>
 
 
 <script>
 
-function saveTournament(){
+let list = JSON.parse(localStorage.getItem("players")) || [];
 
-let data={
-game:game.value,
-entry:entry.value,
-kill:kill.value
-};
+let box = document.getElementById("players");
 
-localStorage.setItem("tournament",JSON.stringify(data));
+if(list.length==0){
 
-showTournament();
+box.innerHTML="No Players Registered";
 
-msg.innerHTML="✅ Saved";
+}else{
 
-}
+list.forEach((p,index)=>{
 
+box.innerHTML +=
+`
+<div class="player">
+Player: ${p.name}<br>
+UID: ${p.uid}<br>
+Phone: ${p.phone}
+</div>
+`;
 
-function showTournament(){
-
-let data=JSON.parse(localStorage.getItem("tournament"));
-
-if(data){
-
-show.innerHTML=
-"🎮 "+data.game+
-"<br>💰 Entry: ₹"+data.entry+
-"<br>🎯 Per Kill: ₹"+data.kill;
+});
 
 }
-
-}
-
-showTournament();
 
 </script>
 
