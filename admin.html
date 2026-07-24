@@ -18,12 +18,28 @@ padding:20px;
 background:#222;
 padding:20px;
 border-radius:15px;
+margin-bottom:20px;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:8px;
+border-radius:8px;
+}
+
+button{
+background:red;
+color:white;
+padding:12px 20px;
+border:0;
+border-radius:10px;
 }
 
 .player{
 background:#333;
-margin:10px;
 padding:10px;
+margin:10px;
 border-radius:10px;
 }
 </style>
@@ -33,6 +49,26 @@ border-radius:10px;
 <body>
 
 <h1>🔥 DropZone Admin</h1>
+
+
+<div class="box">
+
+<h2>Tournament Settings</h2>
+
+<input id="entry" placeholder="Entry Fee">
+
+<input id="kill" placeholder="Per Kill Reward">
+
+<input id="prize" placeholder="Prize Pool">
+
+<input id="slots" placeholder="Total Slots">
+
+<button onclick="save()">Save Settings</button>
+
+<p id="msg"></p>
+
+</div>
+
 
 <div class="box">
 
@@ -47,11 +83,27 @@ No Players Registered
 
 <script>
 
-let players = JSON.parse(localStorage.getItem("players")) || [];
+function save(){
 
-let list = document.getElementById("players");
+let data={
+entry:document.getElementById("entry").value,
+kill:document.getElementById("kill").value,
+prize:document.getElementById("prize").value,
+slots:document.getElementById("slots").value
+};
 
-if(players.length > 0){
+localStorage.setItem("tournament",JSON.stringify(data));
+
+document.getElementById("msg").innerHTML="Saved ✅";
+
+}
+
+
+let players=JSON.parse(localStorage.getItem("players")) || [];
+
+let list=document.getElementById("players");
+
+if(players.length){
 
 list.innerHTML="";
 
@@ -61,8 +113,7 @@ list.innerHTML += `
 <div class="player">
 ${i+1}. ${p.name}<br>
 UID: ${p.uid}
-</div>
-`;
+</div>`;
 
 });
 
