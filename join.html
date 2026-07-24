@@ -22,6 +22,7 @@ input,button{
 padding:12px;
 margin:8px;
 border-radius:8px;
+width:80%;
 }
 
 button{
@@ -35,22 +36,35 @@ border:0;
 
 <body>
 
-<h1>🔥 Join Tournament</h1>
+<h1>🔥 Join DropZone Tournament</h1>
 
 <div class="box">
 
-<input placeholder="Player Name">
-<br>
+<input id="name" placeholder="Player Name">
 
-<input placeholder="Free Fire UID">
-<br>
+<input id="uid" placeholder="Free Fire UID">
 
-<input placeholder="Phone Number">
-<br>
+<input id="phone" placeholder="Mobile Number">
 
-<button>Submit</button>
+<button onclick="join()">Submit</button>
+
+<h3 id="msg"></h3>
 
 </div>
+
+
+<script>
+
+function join(){
+
+let name=document.getElementById("name").value;
+
+document.getElementById("msg").innerHTML=
+"✅ "+name+" Tournament ke liye register ho gaya!";
+
+}
+
+</script>
 
 </body>
 </html>
