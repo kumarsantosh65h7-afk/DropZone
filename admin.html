@@ -40,9 +40,11 @@ border:0;
 <input id="kill" placeholder="Per Kill Reward">
 <br>
 
-<button onclick="saveTournament()">Save Tournament</button>
+<button onclick="saveTournament()">Save</button>
 
 <h3 id="msg"></h3>
+
+<div id="show"></div>
 
 
 <script>
@@ -50,16 +52,36 @@ border:0;
 function saveTournament(){
 
 let data={
-game:document.getElementById("game").value,
-entry:document.getElementById("entry").value,
-kill:document.getElementById("kill").value
+game:game.value,
+entry:entry.value,
+kill:kill.value
 };
 
 localStorage.setItem("tournament",JSON.stringify(data));
 
-document.getElementById("msg").innerHTML="✅ Tournament Saved";
+showTournament();
+
+msg.innerHTML="✅ Saved";
 
 }
+
+
+function showTournament(){
+
+let data=JSON.parse(localStorage.getItem("tournament"));
+
+if(data){
+
+show.innerHTML=
+"🎮 "+data.game+
+"<br>💰 Entry: ₹"+data.entry+
+"<br>🎯 Per Kill: ₹"+data.kill;
+
+}
+
+}
+
+showTournament();
 
 </script>
 
