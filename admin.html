@@ -3,6 +3,8 @@
 <head>
 <title>DropZone Admin</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 body{
 background:#111;
@@ -16,22 +18,13 @@ padding:20px;
 background:#222;
 padding:20px;
 border-radius:15px;
-margin:15px;
-}
-
-button{
-background:red;
-color:white;
-padding:12px;
-border:0;
-border-radius:8px;
 }
 
 .player{
 background:#333;
-padding:10px;
 margin:10px;
-border-radius:8px;
+padding:10px;
+border-radius:10px;
 }
 </style>
 
@@ -45,31 +38,29 @@ border-radius:8px;
 
 <h2>Players List</h2>
 
-<div id="players"></div>
+<div id="players">
+No Players Registered
+</div>
 
 </div>
 
 
 <script>
 
-let list = JSON.parse(localStorage.getItem("players")) || [];
+let players = JSON.parse(localStorage.getItem("players")) || [];
 
-let box = document.getElementById("players");
+let list = document.getElementById("players");
 
-if(list.length==0){
+if(players.length > 0){
 
-box.innerHTML="No Players Registered";
+list.innerHTML="";
 
-}else{
+players.forEach((p,i)=>{
 
-list.forEach((p,index)=>{
-
-box.innerHTML +=
-`
+list.innerHTML += `
 <div class="player">
-Player: ${p.name}<br>
-UID: ${p.uid}<br>
-Phone: ${p.phone}
+${i+1}. ${p.name}<br>
+UID: ${p.uid}
 </div>
 `;
 
