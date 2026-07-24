@@ -25,33 +25,24 @@ color:white;
 padding:12px 25px;
 border:0;
 border-radius:10px;
-font-size:16px;
-}
-
-a{
-text-decoration:none;
 }
 </style>
 
 </head>
 
-<body>
+<body onload="showTournament()">
 
 <h1>🔥 DropZone</h1>
 
 <h2>Free Fire Tournament Platform</h2>
 
-<p>Join exciting tournaments and compete with players.</p>
-
 <div class="box">
 
 <h2>🔥 Live Tournament</h2>
 
-<p>🎮 Game: Free Fire</p>
-
-<p>💰 Entry Fee: ₹10</p>
-
-<p>🎯 Per Kill Reward: ₹5</p>
+<p id="game"></p>
+<p id="entry"></p>
+<p id="kill"></p>
 
 <a href="join.html">
 <button>Join Tournament</button>
@@ -59,9 +50,11 @@ text-decoration:none;
 
 </div>
 
-<p>🌎 Region: India</p>
+<p>Region: India</p>
 
 <p>Contact: kumarsantosh65h7@gmail.com</p>
+
+<script src="script.js"></script>
 
 </body>
 </html>
