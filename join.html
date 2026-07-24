@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Join DropZone Tournament</title>
+<title>Join Tournament - DropZone</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
@@ -18,17 +20,19 @@ padding:20px;
 border-radius:15px;
 }
 
-input,button{
+input{
+width:90%;
 padding:12px;
 margin:8px;
 border-radius:8px;
-width:80%;
 }
 
 button{
 background:red;
 color:white;
+padding:12px 25px;
 border:0;
+border-radius:10px;
 }
 </style>
 
@@ -36,45 +40,40 @@ border:0;
 
 <body>
 
-<h1>🔥 Join Tournament</h1>
+<h1>🔥 Join DropZone Tournament</h1>
 
 <div class="box">
 
 <input id="name" placeholder="Player Name">
 
-<input id="uid" placeholder="Free Fire UID">
+<input id="game" placeholder="Free Fire UID">
 
-<input id="phone" placeholder="Mobile Number">
+<button onclick="join()">Join Tournament</button>
 
-<button onclick="register()">Submit</button>
-
-<h3 id="msg"></h3>
+<p id="msg"></p>
 
 </div>
 
-
 <script>
 
-function register(){
+function join(){
 
-let player = {
-name: document.getElementById("name").value,
-uid: document.getElementById("uid").value,
-phone: document.getElementById("phone").value
+let player={
+name:document.getElementById("name").value,
+uid:document.getElementById("game").value
 };
 
-let players = JSON.parse(localStorage.getItem("players")) || [];
+let players=JSON.parse(localStorage.getItem("players")) || [];
 
 players.push(player);
 
-localStorage.setItem("players", JSON.stringify(players));
+localStorage.setItem("players",JSON.stringify(players));
 
-document.getElementById("msg").innerHTML =
-"✅ Registration Complete";
+document.getElementById("msg").innerHTML="Joined Successfully 🔥";
 
 }
 
 </script>
 
 </body>
-</html>
+</html>	
