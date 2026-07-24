@@ -36,7 +36,7 @@ border:0;
 
 <body>
 
-<h1>🔥 Join DropZone Tournament</h1>
+<h1>🔥 Join Tournament</h1>
 
 <div class="box">
 
@@ -46,7 +46,7 @@ border:0;
 
 <input id="phone" placeholder="Mobile Number">
 
-<button onclick="join()">Submit</button>
+<button onclick="register()">Submit</button>
 
 <h3 id="msg"></h3>
 
@@ -55,12 +55,22 @@ border:0;
 
 <script>
 
-function join(){
+function register(){
 
-let name=document.getElementById("name").value;
+let player = {
+name: document.getElementById("name").value,
+uid: document.getElementById("uid").value,
+phone: document.getElementById("phone").value
+};
 
-document.getElementById("msg").innerHTML=
-"✅ "+name+" Tournament ke liye register ho gaya!";
+let players = JSON.parse(localStorage.getItem("players")) || [];
+
+players.push(player);
+
+localStorage.setItem("players", JSON.stringify(players));
+
+document.getElementById("msg").innerHTML =
+"✅ Registration Complete";
 
 }
 
