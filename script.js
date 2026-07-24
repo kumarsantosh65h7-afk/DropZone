@@ -1,11 +1,18 @@
-fetch("tournament.json")
-.then(res => res.json())
-.then(data => {
+let tournament = {
+    game: "Free Fire",
+    entry: "10",
+    kill: "5"
+};
 
-document.getElementById("tname").innerHTML = data.name;
-document.getElementById("entry").innerHTML = "Entry Fee: ₹" + data.entry;
-document.getElementById("kill").innerHTML = "Per Kill: ₹" + data.kill;
-document.getElementById("prize").innerHTML = "Prize Pool: ₹" + data.prize;
-document.getElementById("slots").innerHTML = "Slots: " + data.slots;
+function showTournament(){
 
-});
+document.getElementById("game").innerHTML =
+tournament.game;
+
+document.getElementById("entry").innerHTML =
+"Entry Fee: ₹" + tournament.entry;
+
+document.getElementById("kill").innerHTML =
+"Per Kill: ₹" + tournament.kill;
+
+}
