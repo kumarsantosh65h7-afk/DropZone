@@ -1,18 +1,18 @@
-let tournament = {
-    game: "Free Fire",
-    entry: "10",
-    kill: "5"
-};
-
 function showTournament(){
 
+fetch("tournament.json")
+.then(response => response.json())
+.then(data => {
+
 document.getElementById("game").innerHTML =
-tournament.game;
+"🎮 Game: " + data.game;
 
 document.getElementById("entry").innerHTML =
-"Entry Fee: ₹" + tournament.entry;
+"💰 Entry Fee: ₹" + data.entry;
 
 document.getElementById("kill").innerHTML =
-"Per Kill: ₹" + tournament.kill;
+"🎯 Per Kill: ₹" + data.kill;
 
-}
+});
+
+}}

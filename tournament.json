@@ -1,7 +1,5 @@
 {
-  "name": "DropZone Free Fire Tournament",
+  "game": "Free Fire",
   "entry": 10,
-  "kill": 5,
-  "prize": 1000,
-  "slots": 48
+  "kill": 5
 }
