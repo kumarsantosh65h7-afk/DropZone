@@ -1,60 +1,182 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DropZone Tournament</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DropZone Admin</title>
 
 <style>
 body{
+margin:0;
 background:#111;
-color:white;
 font-family:Arial;
+color:white;
+}
+
+.header{
+background:#d50000;
+padding:15px;
 text-align:center;
+font-size:28px;
+font-weight:bold;
+}
+
+.container{
 padding:20px;
 }
 
-.box{
-background:#222;
+.card{
+background:#1f1f1f;
 padding:20px;
-border-radius:15px;
-margin-top:20px;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+h2{
+margin-top:0;
+color:#ff4444;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:10px;
+border:none;
+border-radius:8px;
+background:#333;
+color:white;
+box-sizing:border-box;
 }
 
 button{
-background:red;
+width:100%;
+padding:14px;
+background:#ff0000;
 color:white;
-padding:12px 25px;
-border:0;
-border-radius:10px;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#cc0000;
+}
+
+.player{
+background:#2b2b2b;
+padding:10px;
+margin-top:10px;
+border-radius:8px;
 }
 </style>
-
 </head>
 
-<body onload="showTournament()">
+<body>
 
-<h1>🔥 DropZone</h1>
+<div class="header">
+🔥 DropZone Admin Panel
+</div>
 
-<h2>Free Fire Tournament Platform</h2>
+<div class="container">
 
-<div class="box">
+<div class="card">
 
-<h2>🔥 Live Tournament</h2>
+<h2>Tournament Settings</h2>
 
-<p id="game"></p>
-<p id="entry"></p>
-<p id="kill"></p>
+<input id="title" placeholder="Tournament Name">
 
-<a href="join.html">
-<button>Join Tournament</button>
-</a>
+<input id="entry" placeholder="Entry Fee">
+
+<input id="kill" placeholder="Per Kill Reward">
+
+<input id="prize" placeholder="Prize Pool">
+
+<input id="slots" placeholder="Total Slots">
+
+<input id="time" placeholder="Match Time">
+
+<input id="roomid" placeholder="Room ID">
+
+<input id="password" placeholder="Room Password">
+
+<button onclick="saveTournament()">
+Save Tournament
+</button>
+
+<p id="msg"></p>
 
 </div>
 
-<p>Region: India</p>
+<div class="card">
 
-<p>Contact: kumarsantosh65h7@gmail.com</p>
+<h2>Registered Players</h2>
 
-<script src="script.js"></script>
+<div id="players">
+No Players Registered
+</div>
+
+</div>
+
+<script>
+
+function saveTournament(){
+
+let tournament={
+
+title:document.getElementById("title").value,
+
+entry:document.getElementById("entry").value,
+
+kill:document.getElementById("kill").value,
+
+prize:document.getElementById("prize").value,
+
+slots:document.getElementById("slots").value,
+
+time:document.getElementById("time").value,
+
+roomid:document.getElementById("roomid").value,
+
+password:document.getElementById("password").value
+
+};
+
+localStorage.setItem("tournament",JSON.stringify(tournament));
+
+document.getElementById("msg").innerHTML="✅ Tournament Saved";
+
+}let players=JSON.parse(localStorage.getItem("players")) || [];
+
+let playerBox=document.getElementById("players");
+
+if(players.length>0){
+
+playerBox.innerHTML="";
+
+players.forEach(function(p,index){
+
+playerBox.innerHTML += `
+<div class="player">
+
+<b>Player ${index+1}</b><br>
+
+👤 Name: ${p.name || "-" }<br>
+
+🆔 UID: ${p.uid || "-" }<br>
+
+📱 Phone: ${p.phone || "-" }
+
+</div>
+`;
+
+});
+
+}
+
+</script>
 
 </body>
 </html>
